@@ -15,6 +15,9 @@ export POSTGRES_DB=mydjango
 export PGPASSWORD=$POSTGRES_PASSWORD
 #psql -h $POSTGRES_HOST -p $POSTGRES_PORT -U vasya1337 -d $POSTGRES_DB
 
+pip install Django psycopg2-binary
+
+
 python manage.py migrate
 python manage.py makemigrations blog
 
