@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  blog:
+    build:
+      context: .  # Path to the directory containing the Dockerfile
+      dockerfile: Dockerfile  # Name of the Dockerfile (optional if named Dockerfile)
+    container_name: blog
+    restart: always
+    ports:
+      - "8000:8000"  # Change the port as needed
+    environment:
+      - POSTGRES_HOST=db
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=mydjango
+      - POSTGRES_USER=vasya1337
+      - POSTGRES_PASSWORD=onuv41en429uow
+    depends_on:
+      - db
+ 
+  db:
+    image: postgres:latest
+    container_name: postgres_db
+    restart: always
+    environment:
+      - POSTGRES_DB=mydjango
+      - POSTGRES_USER=vasya1337
+      - POSTGRES_PASSWORD=onuv41en429uow
+    ports:
+      - "5432:5432"  # Exposing PostgreSQL port
