@@ -6,10 +6,17 @@
 project_level_refact_configs=$(dirname $(realpath $0))
 
 # install tools
-$project_level_refact_configs/_tool_postgres.sh
-$project_level_refact_configs/_tool_python.sh
-$project_level_refact_configs/_tool_docker.sh
-$project_level_refact_configs/_tool_сhrome.sh
+if [ "$(uname)" == "Darwin" ]; then
+    echo "Mac OS X"
+    
+    $project_level_refact_configs/_tool_postgres.sh
+    $project_level_refact_configs/_tool_python.sh
+    $project_level_refact_configs/_tool_docker.sh
+    $project_level_refact_configs/_tool_сhrome.sh
+else
+    echo "Not Mac OS X"
+    echo "Please install postgres, python, docker and chrome manually"
+fi
 
 # copy refact configs
 user_home_dir=$(eval echo ~$USER)
